@@ -47,7 +47,7 @@ He can see all actions made on the storage, who deleted a file, who where upload
 	 - Save it:
 	 Hit `Ctrl` + `X` , then `Y` and finally `Enter`
 
-4. Update Groups permissions
+4. Update Groups permissions.  
    This file defines who has access to a bucket.
    ```
    nano group_permissions.json
