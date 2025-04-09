@@ -593,7 +593,7 @@ def auth():
     if authenticate(access_code):
         session['access_code'] = access_code
         Thread(target=save_logs, args=(access_code, "AUTHENTICATION: success")).start()
-        logging.error(f"AUTHENTICATION: success => {access_code}")
+        logging.info(f"AUTHENTICATION: success => {access_code}")
         return make_response(
             {
                 "code": 200,

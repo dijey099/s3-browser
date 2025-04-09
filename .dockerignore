@@ -1,0 +1,7 @@
+data/s3_browser.db
+README.md
+.env.example
+.gitignore
+.test.py
+s3-browser.log
+.venv

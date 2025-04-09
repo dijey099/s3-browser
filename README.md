@@ -15,54 +15,62 @@ He can see all actions made on the storage, who deleted a file, who where upload
 
 ## Install & run it
 1. Clone this repo with:
-	```
-	git clone https://github.com/dijey099/s3-browser.git
-	```
+	 ```
+	 git clone https://github.com/dijey099/s3-browser.git
+	 ```
 
 2. Enter into the directory
-	```
-	cd s3-browser
-	```
+	 ```
+	 cd s3-browser
+	 ```
 
 3. Set your environment
-	- Edit .env
-	```
-	cp .env.example .env
-	nano .env
-	```
-	- Set these fields correctly:
-	`ENVIRONMENT` : this set log level to DEBUG when set to *dev* and INFO when set to *prod*  
-	`SERVER_IP` : listen adress for the server. Set it to `0.0.0.0` to listen on all adress.  
-	`SERVER_PORT` : listen port for the server.  
-	`ADMIN_USERNAME` : admin username used for Back Office access.  
-	`ADMIN_PASSWORD` : admin password used for Back Office access.  
-	`ADMIN_MAIL` : admin mail address where to send notification about new user access request.  
-	`BASE_URL` : url used to access the Web Application. (It's recommended to use the server IP address or an URL that points to the server)  
-	`MAIL_USER` : sender mail address. Use Gmail mail address if possible.  
-	`MAIL_PASSWORD` : sender mail passowrd. You should create an *Application Password* in Gmail account settings, instead of using your Gmail password.  
-	`AWS_DEFAULT_REGION` : your AWS region.  
-	`AWS_ACCESS_KEY_ID` : your AWS ACCESS KEY  
-	`AWS_SECRET_ACCESS_KEY` : your AWS SECRET KEY  
+	 - Edit .env
+	 ```
+	 cp .env.example .env
+	 nano .env
+	 ```
+	 - Set these fields correctly:
+	 `ENVIRONMENT` : this set log level to DEBUG when set to *dev* and INFO when set to *prod*  
+	 `SERVER_IP` : listen adress for the server. Set it to `0.0.0.0` to listen on all adress.  
+	 `SERVER_PORT` : listen port for the server.  
+	 `ADMIN_USERNAME` : admin username used for Back Office access.  
+	 `ADMIN_PASSWORD` : admin password used for Back Office access.  
+	 `ADMIN_MAIL` : admin mail address where to send notification about new user access request.  
+	 `BASE_URL` : url used to access the Web Application. (It's recommended to use the server IP address or an URL that points to the server)  
+	 `MAIL_USER` : sender mail address. Use Gmail mail address if possible.  
+	 `MAIL_PASSWORD` : sender mail passowrd. You should create an *Application Password* in Gmail account settings, instead of using your Gmail password.  
+	 `AWS_DEFAULT_REGION` : your AWS region.  
+	 `AWS_ACCESS_KEY_ID` : your AWS ACCESS KEY  
+	 `AWS_SECRET_ACCESS_KEY` : your AWS SECRET KEY  
 
-	- Save it:
-	Hit `Ctrl` + `X` , then `Y` and finally `Enter`
+	 - Save it:
+	 Hit `Ctrl` + `X` , then `Y` and finally `Enter`
 
-4. And then choose one of the following options:
+4. Update Groups permissions
+   This file defines who has access to a bucket.
+   ```
+   nano group_permissions.json
+   ```
+   Then save it.
+
+5. And then choose one of the following options:
 
 ### Using docker (most recommanded)
 > [!NOTE]
 > Make sure you have Docker engine installed on your OS
-> If you wish to install Docker on Linux, copy and run `curl -sSL https://get.docker.io | sh`
+> If you wish to install Docker on Linux, copy and run `curl -sSL https://get.docker.io | sh`  
+> If you are facing an issue (like in Kali Linux) refer [here](https://docs.docker.com/engine/install/)
 
 - Build your image
-```
-docker build -t s3-browser .
-```
+	```
+	docker build -t s3-browser .
+	```
 
 - Run your container
-```
-docker run -d --restart unless-stopped -p 4444:4444/tcp -v /path/to/project/data:/app/data --name s3-browser s3-browser
-```
+	```
+	docker run -d --restart unless-stopped -p 4444:4444/tcp -v /full/path/to/project/data:/s3-browser/data --name s3-browser s3-browser
+	```
 
 - Check it
 	```
@@ -71,14 +79,14 @@ docker run -d --restart unless-stopped -p 4444:4444/tcp -v /path/to/project/data
 
 ### Using simple Python
 > [!NOTE]
-> Make sure you have Python installed.  
+> Make sure you have Python 3 installed.  
 > If you want to use project level Python environment, install **Python venv** with `pip3 install virtualenv`
 > and create a new environment using `python3 -m venv .venv` and activate the new created environment with `source .venv/bin/activate`
 
 - Install depandencies
-   ```
-   pip3 install -r requirements.txt
-   ```
+	```
+	pip3 install -r requirements.txt
+	```
 
 - Run it
 	Using Python binary
@@ -91,14 +99,9 @@ docker run -d --restart unless-stopped -p 4444:4444/tcp -v /path/to/project/data
 	gunicorn --access-logfile /path/log//requests.log --log-file /path/log/app.log -b 0.0.0.0:4444 s3b:app
 	```
 
-3. Install dependancies
-	```
-	pip install -r requirements.txt
-	```
-
 ### Using systemd daemon
 > [!NOTE]
-> Make sure you have Python installed.
+> Make sure you have Python 3 installed.
 
 > [!WARNING]
 > You must use system wide python environment
