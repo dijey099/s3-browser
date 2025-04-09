@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>S3 Browser</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="shortcut icon" href="/static/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/static/css/home.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <script type="text/javascript" src="/static/js/admin_users.js"></script>
+    <img src="/static/logo.png" alt="Logo" class="logo">
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    <div class="user-info">
+        <span><b>{{ name }}</b></span><br>
+        <span>{{ mail }}</span><br>
+        <span><a class="logout-btn" href="/admin/logout">Logout</a></span>
+    </div>
+
+    <div id="user-info">
+        <b>Name: </b><span id="user-name"></span><br>
+        <b>Role: </b><span id="user-role"></span><br>
+        <b>Mail: </b><span id="user-mail"></span><br>
+        <b>Phone: </b><span id="user-phone"></span>
+        <input type="hidden" name="access_code" id="access_code" value="">
+        <p id="delete-user-message" class="error-message"></p>
+        <button id="delete-user-btn" class="close-user-info-btn" type="button">Delete</button>
+        <button id="close-user-btn" class="close-user-info-btn" type="button">Close</button>
+    </div>
+
+    <div align="center" class="main-view">
+        <p class="table-name">
+            <a class="menu-button menu-button-active" href="#">Users</a>
+            <a class="menu-button" href="/admin/buckets">Buckets</a>
+            <a class="menu-button" href="/admin/permissions">Permissions</a>
+            <a class="menu-button" href="/admin/logs">Logs</a>
+        </p>
+        <table class="users-table">
+            <thead>
+                 <tr>
+                    <th style="color: #C0FF72; font-size: 20px;">Access code</th>
+                    <th style="color: #C0FF72; font-size: 20px;">Name</th>
+                    <th style="color: #C0FF72; font-size: 20px">Role</th>
+                    <th style="color: #C0FF72; font-size: 20px">Mail</th>
+                    <th style="color: #C0FF72; font-size: 20px">Phone</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if users %}
+                    {% for user in users %}
+                        <tr class="user-row user-item">
+                            <td><a class="user-item" style="cursor: pointer;" value="{{ user[0] }}">{{ user[0] }}</a></td>
+                            <td>{{ user[1] }}</td>
+                            <td>{{ user[2] }}</td>
+                            <td>{{ user[3] }}</td>
+                            <td>{{ user[4] }}</td>
+                        </tr>
+                    {% endfor %}
+                {% endif %}
+                </tbody>
+        </table>
+    </div>
+</body>
+</html>

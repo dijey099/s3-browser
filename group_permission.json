@@ -1,0 +1,7 @@
+{
+	"President": ["*"],
+	"Validator": ["*"],
+	"Presse": ["bucket1", "bucket2"],
+	"Assistant": ["bucket1", "bucket3"],
+	"Analyst": ["bucket2"]
+}

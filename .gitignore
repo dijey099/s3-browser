@@ -1,0 +1,5 @@
+.env
+.venv
+test.py
+s3-browser.log
+data/s3_browser.db

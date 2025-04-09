@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Registration | S3 Browser</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="shortcut icon" href="static/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="static/css/main.css">
+    <script type="text/javascript" src="static/js/registration.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    <form id="registration-form">
+        <div align="center">
+            <img src="static/logo.png" alt="Logo">
+        </div>
+
+        <label for="name">Name</label>
+        <input type="text" placeholder="Your name" name="name" id="name" required>
+
+        <label for="role">Role</label>
+        <!-- <input type="text" placeholder="Your role" name="role" id="role" required> -->
+        <select id="role" name="role">
+            {% for role in roles %}
+                <option value="{{role}}">{{role}}</option>
+            {% endfor %}
+        </select>
+
+        <label for="mail">Email address</label>
+        <input type="text" placeholder="Your email address" name="mail" id="mail" required>
+
+        <label for="phone">Phone</label>
+        <input type="text" placeholder="Your phone number" name="phone" id="phone" required>
+
+        <p id="error-message" class="error-message"></p>
+        <button id="register-btn" type="submit">Request</button>
+        <a href="/login" id="register-btn">Login</a>
+    </form>
+</body>
+</html>

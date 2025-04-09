@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>S3 Browser</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="shortcut icon" href="/static/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/static/css/home.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <script type="text/javascript" src="/static/js/admin_bucket.js"></script>
+    <img src="/static/logo.png" alt="Logo" class="logo">
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    <div class="user-info">
+        <span><b>{{ name }}</b></span><br>
+        <span>{{ mail }}</span><br>
+        <span><a class="logout-btn" href="/logout">Logout</a></span>
+    </div>
+
+    <form id="new-folder" name="new-folder">
+        <input type="text" id="folder-name" name="folder-name" placeholder="New forder name">
+        <input type="hidden" id="object-path" name="object-path" value="{{ path }}">
+        <p id="new-folder-message" class="error-message"></p>
+        <button id="new-folder-btn" class="upload-delete-cancel-btn" type="submit">Create folder</button>
+        <button id="close-folder-btn" class="upload-delete-cancel-btn" type="button">Close</button>
+    </form>
+
+    <form id="file-upload" name="file-upload">
+        <input type="file" id="object-file" name="object-file">
+        <label for="object-file" class="custom-file-button upload-delete-cancel-btn">Select File</label>
+        <span id="file-name">No file selected</span>
+
+        <input type="hidden" id="object-path" name="object-path" value="{{ path }}">
+        <p id="upload-response-message" class="error-message"></p>
+        <button id="file-upload-btn" class="upload-delete-cancel-btn" type="submit">Upload file</button>
+        <button id="close-upload-btn" class="upload-delete-cancel-btn" type="button">Close</button>
+    </form>
+
+    <form id="file-delete" name="file-delete">
+        <select id="file-delete-selection" name="file-delete-selection">
+            <option value="none">No file selected</option>
+            {% for content in contents %}
+                <option value="{{ path }}/{{ content[0] }}">{{ content[0] }}</option>
+            {% endfor %}
+        </select>
+
+        <input type="hidden" id="object-path" name="object-path" value="{{ path }}">
+        <p id="delete-response-message" class="error-message"></p>
+        <button id="file-delete-btn" class="upload-delete-cancel-btn" type="submit">Delete file</button>
+        <button id="close-delete-btn" class="upload-delete-cancel-btn" type="button">Close</button>
+    </form>
+    
+    <div align="center" class="main-view">
+        <p class="bucket-path">
+            <button id="admin-home-btn" class="action-btn" title="Home">🏠</button>
+            <button id="folder-btn" class="action-btn" title="Add directory">📁</button>
+            <button id="add-btn" class="action-btn" title="Add file">➕</button>
+            <button id="delete-btn" class="action-btn" title="Delete file">➖</button>
+            => 📂
+            /
+            {% for path in paths %}
+                <a class="paths" href="{{ path[1] }}">{{ path[0] }}</a> /
+            {% endfor %}
+        </p>
+
+        <table class="bucket-table">
+            <thead>
+                 <tr>
+                    <th style="color: #C0FF72; font-size: 20px; width: 80%;">Name</th>
+                    <th style="color: #C0FF72; font-size: 20px; width: 10%">Type</th>
+                    <th style="color: #C0FF72; font-size: 20px; width: 10%">Size</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for content in contents %}
+                    <tr class="bucket-row bucket-item">
+                        <td style="width: 85%;"><a class="bucket-item" href="/admin/bucket/{{ path }}/?file={{ content[0] }}" target="_blank">{{ content[0] }}</a></td>
+                        <td style="width: 10%;">File</td>
+                        <td style="width: 10%;">{{ content[1] }}</td>
+                    </tr>
+                {% endfor %}
+                {% for folder in folders %}
+                    <tr class="bucket-row bucket-item">
+                        <td style="width: 85%;"><a class="bucket-item" href="/admin/bucket/{{ path }}/{{ folder }}">{{ folder }}</a></td>
+                        <td style="width: 10%;">Folder</td>
+                        <td style="width: 10%;">None</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

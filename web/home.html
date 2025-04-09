@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>S3 Browser</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="shortcut icon" href="/static/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/static/css/home.css">
+    <script type="text/javascript" src="/static/js/home.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <img src="/static/logo.png" alt="Logo" class="logo">
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    <div class="user-info">
+        <span><b>{{ name }}</b></span><br>
+        <span>{{ role }}</span><br>
+        <span>{{ mail }}</span><br>
+        <span>{{ phone }}</span><br>
+        <span><a class="logout-btn" href="/logout">Logout</a></span>
+    </div>
+    <div align="center" class="main-view">
+        <p class="bucket-path">
+            <button id="home-btn" class="action-btn">🏠</button>
+            => 📂 /
+        </p>
+        <table class="bucket-table">
+            <thead>
+                 <tr>
+                    <th style="color: #C0FF72; font-size: 20px; width: 85%;">Name</th>
+                    <th style="color: #C0FF72; font-size: 20px; width: 10%">Type</th>
+                    <th style="color: #C0FF72; font-size: 20px; width: 10%">Size</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for bucket in buckets %}
+                    <tr class="bucket-row bucket-item">
+                        <td style="width: 85%;"><a class="bucket-item" href="/bucket/{{ bucket }}">{{ bucket }}</a></td>
+                        <td style="width: 10%;">Bucket</td>
+                        <td style="width: 10%;">None</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

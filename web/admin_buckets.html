@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>S3 Browser</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="shortcut icon" href="/static/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/static/css/home.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <script type="text/javascript" src="/static/js/admin_buckets.js"></script>
+    <img src="/static/logo.png" alt="Logo" class="logo">
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    <div class="user-info">
+        <span><b>{{ name }}</b></span><br>
+        <span>{{ mail }}</span><br>
+        <span><a class="logout-btn" href="/admin/logout">Logout</a></span>
+    </div>
+
+    <form id="new-bucket-form" name="new-bucket-form">
+        <input type="text" id="new-bucket-name" name="new-bucket-name" placeholder="New bucket name" required>
+        <p id="new-bucket-message" class="error-message"></p>
+        <button id="new-bucket-btn" class="upload-delete-cancel-btn" type="submit">Create</button>
+        <button id="close-new-bucket-btn" class="upload-delete-cancel-btn" type="button">Close</button>
+    </form>
+
+    <form id="delete-bucket-form" name="delete-bucket-form">
+        <select id="delete-bucket-selection" name="delete-bucket-selection">
+            <option value="none">No bucket selected</option>
+            {% for bucket in buckets %}
+                <option value="{{ bucket }}">{{ bucket }}</option>
+            {% endfor %}
+        </select>
+        <p id="delete-response-message" class="error-message"></p>
+        <button id="delete-bucket-btn" class="upload-delete-cancel-btn" type="submit">Delete</button>
+        <button id="close-delete-bucket-btn" class="upload-delete-cancel-btn" type="button">Close</button>
+    </form>
+    
+    <div align="center" class="main-view">
+        <p class="bucket-path">
+            <button id="admin-home-btn" class="action-btn" title="Home">🏠</button>
+            <button id="add-btn" class="action-btn" title="Add bucket">➕</button>
+            <button id="delete-btn" class="action-btn" title="Delete bucket">➖</button>
+            => 📂 /
+        </p>
+
+        <table class="bucket-table">
+            <thead>
+                 <tr>
+                    <th style="color: #C0FF72; font-size: 20px; width: 85%;">Name</th>
+                    <th style="color: #C0FF72; font-size: 20px; width: 10%">Type</th>
+                    <th style="color: #C0FF72; font-size: 20px; width: 10%">Size</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for bucket in buckets %}
+                    <tr class="bucket-row bucket-item">
+                        <td style="width: 85%;"><a class="bucket-item" href="/admin/bucket/{{ bucket }}">{{ bucket }}</a></td>
+                        <td style="width: 10%;">Bucket</td>
+                        <td style="width: 10%;">None</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

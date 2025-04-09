@@ -1,0 +1,477 @@
+/* Universal styles */
+*,
+*:before,
+*:after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #080710;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.logo {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    top: 10px;
+    left: 10px;
+}
+
+/* Background shapes */
+.background {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+}
+
+.user-info {
+    position: absolute;
+    right: 100px;
+    top: 30px;
+    color: white;
+}
+
+.background .shape {
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    border-radius: 50%;
+}
+
+.shape:first-child {
+    background: linear-gradient(#08ff5e, #22382a);
+    left: 30px;
+    bottom: 50px;
+}
+
+.shape:last-child {
+    background: linear-gradient(to right, #22382a, #C0FF72);
+    right: 50px;
+    top: 30px;
+}
+
+.error-message {
+    color: #ff4d4d;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 10px;
+    display: none;
+    background: rgba(255, 0, 0, 0.1);
+    padding: 8px;
+    border-radius: 5px;
+}
+
+
+/* Form styles */
+form {
+    width: 400px;
+    background-color: rgba(255, 255, 255, 0.13);
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+    padding: 50px 35px;
+    position: relative;
+    z-index: 1;
+}
+
+form * {
+    font-family: 'Poppins', sans-serif;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    outline: none;
+    border: none;
+}
+
+form img {
+    max-width: 100px;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+input, select {
+    display: block;
+    height: 50px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.07);
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+::placeholder {
+    color: #e5e5e5;
+}
+
+button {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+    background-color: #08ff5e;
+    color: #22382a;
+    padding: 15px 0;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.5s ease, color 0.5s ease, border 0.5s ease;
+}
+
+button:hover {
+    background-color: transparent;
+    border: 2px solid #FFFF;
+    color: #FFF;
+}
+
+.logout-btn {
+    text-decoration: none;
+    padding: 2px 5px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #22382a;
+    border-radius: 5px;
+    background-color: #C0FF72;
+    transition: background-color 0.5s ease, color 0.5s ease, border 0.5s ease;
+}
+
+.logout-btn:hover {
+    background-color: transparent;
+    border: 1px solid #FFFF;
+    color: #FFF;
+}
+
+.main-view {
+    width: 90%;
+    height: 65vh;
+    overflow: scroll;
+    margin: 0;
+    text-align: left;
+    background-color: rgba(255, 255, 255, 0.13);
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+    padding: 50px 35px;
+    position: relative;
+    z-index: 1;
+}
+
+.main-view * {
+    font-family: 'Poppins', sans-serif;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    outline: none;
+    border: none;
+}
+
+.bucket-path {
+    border-bottom: 3px solid #08ff5e;
+    color: #C0FF72;
+    font-size: 15px;
+    overflow-inline: scroll;
+}
+
+.bucket-path a {
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.paths {
+    color: #FFF;
+    transition: color 0.8s ease, text-shadow 0.8s ease;
+}
+
+.paths:hover {
+    color: #08ff5e;
+    text-shadow: 5px 7px 5px;
+}
+
+.bucket-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+.bucket-row {
+    border-bottom: 1px solid #C0FF72;
+}
+
+.bucket-item {
+    margin: 10px;
+    text-decoration: none;
+    transition: color 0.7s ease, text-decoration 1s linear;
+}
+
+.bucket-item:hover {
+    color: #C0FF72;
+    text-decoration: underline;
+}
+
+.action-btn {
+    width: 50px;
+    height: 50px;
+    padding: 5px;
+}
+
+#object-file {
+    display: none;
+}
+
+.custom-file-button {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    text-align: center;
+}
+
+.custom-file-button:hover {
+    background-color: #00cc66;
+}
+
+#file-name {
+    margin-left: 10px;
+    font-size: 14px;
+    color: white;
+}
+
+#new-folder {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 999;
+}
+
+#file-upload {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 999;
+}
+
+#file-delete {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 999;
+}
+
+.upload-delete-cancel-btn {
+    background-color: #08ff5e;
+    color: #22382a;
+    transition: background-color 0.5s ease, color 0.5s ease, border 0.5s ease;
+}
+
+.upload-delete-cancel-btn:hover {
+    background-color: transparent;
+    border: 2px solid #FFFF;
+    color: #FFF;
+}
+
+.menu-button {
+    color: #08ff5e;
+    text-decoration: none;
+    font-size: 25px;
+    overflow-inline: scroll;
+    margin: 0 10px;
+    transition: color 0.5s ease;
+}
+
+.menu-button:hover {
+    color: #FFFF;
+}
+
+.menu-button-active {
+    color: #FFFF;
+}
+
+.table-name {
+    border-bottom: 3px solid #08ff5e;
+}
+
+.users-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+.user-row {
+    border-bottom: 1px solid #C0FF72;
+}
+
+.user-item {
+    margin: 10px;
+    text-decoration: none;
+    transition: color 0.7s ease, text-decoration 1s linear;
+}
+
+.user-item:hover {
+    color: #C0FF72;
+    text-decoration: underline;
+}
+
+#new-bucket-form {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 999;
+}
+
+#delete-bucket-form {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 999;
+}
+
+.permissions-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+.permission-row {
+    border-bottom: 1px solid #C0FF72;
+}
+
+.permission-item {
+    margin: 10px;
+    text-decoration: none;
+    transition: color 0.7s ease, text-decoration 1s linear;
+}
+
+.permission-item:hover {
+    color: #C0FF72;
+    text-decoration: underline;
+}
+
+#user-info {
+    display: none;
+    position: fixed;
+    font-family: 'Poppins', sans-serif;
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.13);
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+    padding: 50px 35px;
+    z-index: 999;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.close-user-info-btn {
+    margin: 5px;
+    background-color: #08ff5e;
+    color: #22382a;
+    transition: background-color 0.5s ease, color 0.5s ease, border 0.5s ease;
+}
+
+.close-user-info-btn:hover {
+    background-color: transparent;
+    border: 2px solid #FFFF;
+    color: #FFF;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .background {
+        display: none;
+    }
+
+    form {
+        width: 90%;
+        padding: 30px 20px;
+    }
+
+    label {
+        font-size: 14px;
+    }
+
+    input {
+        height: 40px;
+        font-size: 12px;
+    }
+
+    button {
+        margin-top: 30px;
+        padding: 10px 0;
+        font-size: 16px;
+    }
+
+    .main-view {
+        margin-top: 150px;
+    }
+
+    #file-upload {
+/*        position: absolute;*/
+        width: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    form {
+        padding: 20px 15px;
+    }
+
+    label {
+        font-size: 12px;
+    }
+
+    input {
+        height: 35px;
+        font-size: 10px;
+    }
+
+    button {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 375px) {
+    .logo {
+        display: none;
+    }
+}
