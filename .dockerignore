@@ -1,4 +1,6 @@
 data/s3_browser.db
+data/app.log
+data/requests.log
 README.md
 .env.example
 .gitignore
