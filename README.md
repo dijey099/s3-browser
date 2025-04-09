@@ -133,7 +133,7 @@ He can see all actions made on the storage, who deleted a file, who where upload
                   --threads 5 \
                   --access-logfile /path/log//requests.log \
                   --log-file /path/log/app.log \
-                  --timeout 780 \
+                  --timeout 80 \
                   -b 0.0.0.0:4444 \
                   s3b:app
   User = root
@@ -152,3 +152,5 @@ He can see all actions made on the storage, who deleted a file, who where upload
   ```
   sudo systemctl enable --now sb3
   ```
+
+ 6. When it successfully started, open Web browser and navigate to `http://<server_ip>:<server_port/`
