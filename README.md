@@ -154,3 +154,13 @@ He can see all actions made on the storage, who deleted a file, who where upload
   ```
 
  6. When it successfully started, open Web browser and navigate to `http://<server_ip>:<server_port/`
+
+## Contribute ?
+Clone this repo and create a pull request.  
+I will check it out and merge to master.
+
+## Contact me
+- [Linkedin](https://www.linkedin.com/in/d1j3y)
+- [WhatsApp](https://wa.me/261326196823)
+- [Messenger](https://m.me/d1j3y)
+- [Mail](lionnelrazaf@gmail.com)
